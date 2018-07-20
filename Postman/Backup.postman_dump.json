@@ -1,0 +1,323 @@
+{
+	"version": 1,
+	"collections": [
+		{
+			"id": "eb4d08e9-7d88-46fb-af14-75c10997ac1c",
+			"name": "ProductApiTest",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"variables": [],
+			"order": [
+				"69ea6423-13d7-4c1b-8b3f-9c79591feafb",
+				"b0addd73-a191-40c7-b45d-80c56d91083a",
+				"c35b16e9-7e51-48dd-baa0-2905570ffd91",
+				"5958ab20-5236-419b-b037-41073f0f4572",
+				"63da8be2-3d9e-4fae-837d-33d5ab0ba6cd"
+			],
+			"folders_order": [],
+			"folders": [],
+			"requests": [
+				{
+					"id": "5958ab20-5236-419b-b037-41073f0f4572",
+					"name": "PUT product/{id}",
+					"url": "{{url}}/api/Product/{{ProductId}}",
+					"description": "https://localhost:44382/api/Product/68f3df22-4733-4eac-b25d-ed397ed57359",
+					"data": [],
+					"dataMode": "raw",
+					"headerData": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"method": "PUT",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "74c00560-2845-4f40-9824-d6333cdf9f96",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 204\"] = responseCode.code === 204;"
+								]
+							}
+						}
+					],
+					"folder": null,
+					"preRequestScript": null,
+					"tests": "tests[\"Status code is 204\"] = responseCode.code === 204;",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "eb4d08e9-7d88-46fb-af14-75c10997ac1c",
+					"rawModeData": "{\n\t\"Description\": \"{{PutDescription}}\",\n\t\"Model\": \"{{PutModel}}\",\n\t\"Brand\": \"{{PutBrand}}\"\n}",
+					"headers": "Content-Type: application/json\n",
+					"pathVariables": {}
+				},
+				{
+					"id": "63da8be2-3d9e-4fae-837d-33d5ab0ba6cd",
+					"name": "DELETE product/{id}",
+					"url": "{{url}}/api/Product/{{ProductId}}",
+					"description": "",
+					"data": null,
+					"dataMode": "params",
+					"headerData": [],
+					"method": "DELETE",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4f20e0c1-cde1-47a8-9003-64c317ac249a",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 204\"] = responseCode.code === 204;",
+									"",
+									"tests[\"Deleted content\"] = !(responseBody.has(postman.getEnvironmentVariable(\"ProductId\")));"
+								]
+							}
+						}
+					],
+					"folder": null,
+					"preRequestScript": null,
+					"tests": "tests[\"Status code is 204\"] = responseCode.code === 204;\n\ntests[\"Deleted content\"] = !(responseBody.has(postman.getEnvironmentVariable(\"ProductId\")));",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "eb4d08e9-7d88-46fb-af14-75c10997ac1c",
+					"headers": "",
+					"pathVariables": {}
+				},
+				{
+					"id": "69ea6423-13d7-4c1b-8b3f-9c79591feafb",
+					"name": "GET products",
+					"url": "{{url}}/api/Product",
+					"description": "https://localhost:44382/api/Product",
+					"data": null,
+					"dataMode": "params",
+					"headerData": [],
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ef30a858-f868-4358-acf7-478243a44c0b",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+									" ",
+									"tests[\"Has Content-Type\"] = contentTypeHeaderExists;",
+									" ",
+									"if (contentTypeHeaderExists) {",
+									"    tests[\"Content-Type is application/json\"] = ",
+									"      responseHeaders[\"Content-Type\"].has(\"application/json\");",
+									"}",
+									"",
+									"if(responseCode.code === 200){",
+									"    postman.setEnvironmentVariable(\"ProductId\", pm.response.json()[0].id);",
+									"    postman.setEnvironmentVariable(\"ProductJSON\", JSON.stringify(pm.response.json()[0]));",
+									"}"
+								]
+							}
+						}
+					],
+					"folder": null,
+					"preRequestScript": null,
+					"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");\n \ntests[\"Has Content-Type\"] = contentTypeHeaderExists;\n \nif (contentTypeHeaderExists) {\n    tests[\"Content-Type is application/json\"] = \n      responseHeaders[\"Content-Type\"].has(\"application/json\");\n}\n\nif(responseCode.code === 200){\n    postman.setEnvironmentVariable(\"ProductId\", pm.response.json()[0].id);\n    postman.setEnvironmentVariable(\"ProductJSON\", JSON.stringify(pm.response.json()[0]));\n}",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "eb4d08e9-7d88-46fb-af14-75c10997ac1c",
+					"headers": "",
+					"pathVariables": {}
+				},
+				{
+					"id": "b0addd73-a191-40c7-b45d-80c56d91083a",
+					"name": "GET product/{id}",
+					"url": "{{url}}/api/Product/{{ProductId}}",
+					"description": "",
+					"data": null,
+					"dataMode": "params",
+					"headerData": [],
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "10f82319-841b-4678-b1af-fc30455cb84d",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+									" ",
+									"tests[\"Has Content-Type\"] = contentTypeHeaderExists;",
+									" ",
+									"if (contentTypeHeaderExists) {",
+									"    tests[\"Content-Type is application/json\"] = ",
+									"      responseHeaders[\"Content-Type\"].has(\"application/json\");",
+									"}",
+									"",
+									"tests[\"Product has correct values\"] = (has());",
+									"",
+									"function has()",
+									"{",
+									"    return responseBody.has(getVar());",
+									"}",
+									"",
+									"",
+									"function getVar(){",
+									"    return postman.getEnvironmentVariable(\"ProductJSON\");",
+									"}",
+									""
+								]
+							}
+						}
+					],
+					"folder": null,
+					"preRequestScript": null,
+					"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");\n \ntests[\"Has Content-Type\"] = contentTypeHeaderExists;\n \nif (contentTypeHeaderExists) {\n    tests[\"Content-Type is application/json\"] = \n      responseHeaders[\"Content-Type\"].has(\"application/json\");\n}\n\ntests[\"Product has correct values\"] = (has());\n\nfunction has()\n{\n    return responseBody.has(getVar());\n}\n\n\nfunction getVar(){\n    return postman.getEnvironmentVariable(\"ProductJSON\");\n}\n",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "eb4d08e9-7d88-46fb-af14-75c10997ac1c",
+					"headers": "",
+					"pathVariables": {}
+				},
+				{
+					"id": "c35b16e9-7e51-48dd-baa0-2905570ffd91",
+					"name": "POST product",
+					"url": "{{url}}/api/Product",
+					"description": "https://localhost:44382/api/Product",
+					"data": [],
+					"dataMode": "raw",
+					"headerData": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"method": "POST",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "599b50dd-1714-4d13-9c48-12f8906fc950",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"",
+									"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+									" ",
+									"tests[\"Has Content-Type\"] = contentTypeHeaderExists;",
+									" ",
+									"if (contentTypeHeaderExists) {",
+									"    tests[\"Content-Type is application/json\"] = ",
+									"      responseHeaders[\"Content-Type\"].has(\"application/json\");",
+									"}",
+									"",
+									"tests[\"Product has correct values\"] = (has(\"Description\") && has(\"Model\") && has(\"Brand\"));",
+									"",
+									"function has(txt)",
+									"{",
+									"    return responseBody.has(getVar(\"Post\"+txt));",
+									"}",
+									"",
+									"function getVar(txt){",
+									"    return postman.getEnvironmentVariable(txt);",
+									"}"
+								]
+							}
+						}
+					],
+					"folder": null,
+					"preRequestScript": null,
+					"tests": "tests[\"Status code is 201\"] = responseCode.code === 201;\n\nvar contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");\n \ntests[\"Has Content-Type\"] = contentTypeHeaderExists;\n \nif (contentTypeHeaderExists) {\n    tests[\"Content-Type is application/json\"] = \n      responseHeaders[\"Content-Type\"].has(\"application/json\");\n}\n\ntests[\"Product has correct values\"] = (has(\"Description\") && has(\"Model\") && has(\"Brand\"));\n\nfunction has(txt)\n{\n    return responseBody.has(getVar(\"Post\"+txt));\n}\n\nfunction getVar(txt){\n    return postman.getEnvironmentVariable(txt);\n}",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "eb4d08e9-7d88-46fb-af14-75c10997ac1c",
+					"rawModeData": "{\n\t\"Description\": \"{{PostDescription}}\",\n\t\"Model\": \"{{PostModel}}\", \n\t\"Brand\": \"{{PostBrand}}\"\n}",
+					"headers": "Content-Type: application/json\n",
+					"pathVariables": {}
+				}
+			]
+		}
+	],
+	"environments": [
+		{
+			"id": "4944a3c8-f23a-4f5e-b95e-f4f0e1ea3312",
+			"name": "ProductAPIEnvironment",
+			"values": [
+				{
+					"key": "url",
+					"value": "https://localhost:44382/",
+					"enabled": true,
+					"type": "text"
+				},
+				{
+					"key": "ProductId",
+					"value": "239fd664-6ccb-489a-8d0f-6502f2daf76a",
+					"enabled": true,
+					"type": "text"
+				},
+				{
+					"key": "ProductJSON",
+					"value": "{\"id\":\"239fd664-6ccb-489a-8d0f-6502f2daf76a\",\"description\":\"50in TV\",\"model\":\"IPS130\",\"brand\":\"SUSA\"}",
+					"enabled": true,
+					"type": "text"
+				},
+				{
+					"key": "PostDescription",
+					"value": "50in TV",
+					"enabled": true,
+					"type": "text"
+				},
+				{
+					"key": "PostModel",
+					"value": "IPS130",
+					"enabled": true,
+					"type": "text"
+				},
+				{
+					"key": "PostBrand",
+					"value": "SUSA",
+					"enabled": true,
+					"type": "text"
+				},
+				{
+					"key": "PutDescription",
+					"value": "Amazing 4K TV",
+					"enabled": true,
+					"type": "text"
+				},
+				{
+					"key": "PutModel",
+					"value": "OLED9000",
+					"enabled": true,
+					"type": "text"
+				},
+				{
+					"key": "PutBrand",
+					"value": "Pan",
+					"enabled": true,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"headerPresets": [],
+	"globals": []
+}
