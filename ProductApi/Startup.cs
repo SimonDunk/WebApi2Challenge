@@ -56,7 +56,7 @@ namespace ProductApi
         private void AddProduct(ProductContext context, int i)
         {
             Random rnd = new Random();
-            context.ProductList.Add(new Product { Description = descs[rnd.Next(descs.Count())], Model = models[rnd.Next(models.Count())], Brand = brands[rnd.Next(brands.Count())] });
+            context.ProductList.Add(new Product { Description = descs[rnd.Next(0, descs.Count())], Model = models[rnd.Next(0, models.Count())], Brand = brands[rnd.Next(0, brands.Count())] });
         }
     }
 }

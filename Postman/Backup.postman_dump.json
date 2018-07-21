@@ -13,11 +13,70 @@
 				"b0addd73-a191-40c7-b45d-80c56d91083a",
 				"c35b16e9-7e51-48dd-baa0-2905570ffd91",
 				"5958ab20-5236-419b-b037-41073f0f4572",
-				"63da8be2-3d9e-4fae-837d-33d5ab0ba6cd"
+				"63da8be2-3d9e-4fae-837d-33d5ab0ba6cd",
+				"77bba936-da90-412b-bf56-94c22ac34758",
+				"12f5a3ed-f6fb-487e-87c8-1ce932c0ac5a",
+				"66c61d79-9e29-49d2-939e-00cc9bfb1390"
 			],
 			"folders_order": [],
 			"folders": [],
 			"requests": [
+				{
+					"id": "12f5a3ed-f6fb-487e-87c8-1ce932c0ac5a",
+					"name": "Get Product/Model/{model}",
+					"url": "https://localhost:44382/api/Product/model/{{Model}}",
+					"description": "",
+					"data": null,
+					"dataMode": "params",
+					"headerData": [],
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5777f592-2947-4aa0-9e05-b6c2e805643f",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+									" ",
+									"tests[\"Has Content-Type\"] = contentTypeHeaderExists;",
+									" ",
+									"if (contentTypeHeaderExists) {",
+									"    tests[\"Content-Type is application/json\"] = ",
+									"      responseHeaders[\"Content-Type\"].has(\"application/json\");",
+									"}",
+									"",
+									"var response = JSON.parse(responseBody);",
+									"var b = true;",
+									"",
+									"response.forEach(function (obj) {",
+									"    if(getVar(\"Model\") != obj.model) {",
+									"        b = false;",
+									"    }",
+									"});",
+									"tests[\"All Products have same Model\"] = b;",
+									"",
+									"function getVar(txt){",
+									"    return postman.getEnvironmentVariable(txt);",
+									"}"
+								]
+							}
+						}
+					],
+					"folder": null,
+					"preRequestScript": null,
+					"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");\n \ntests[\"Has Content-Type\"] = contentTypeHeaderExists;\n \nif (contentTypeHeaderExists) {\n    tests[\"Content-Type is application/json\"] = \n      responseHeaders[\"Content-Type\"].has(\"application/json\");\n}\n\nvar response = JSON.parse(responseBody);\nvar b = true;\n\nresponse.forEach(function (obj) {\n    if(getVar(\"Model\") != obj.model) {\n        b = false;\n    }\n});\ntests[\"All Products have same Model\"] = b;\n\nfunction getVar(txt){\n    return postman.getEnvironmentVariable(txt);\n}",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "eb4d08e9-7d88-46fb-af14-75c10997ac1c",
+					"headers": "",
+					"pathVariables": {}
+				},
 				{
 					"id": "5958ab20-5236-419b-b037-41073f0f4572",
 					"name": "PUT product/{id}",
@@ -93,6 +152,62 @@
 					"pathVariables": {}
 				},
 				{
+					"id": "66c61d79-9e29-49d2-939e-00cc9bfb1390",
+					"name": "Get Product/Brand/{brand}",
+					"url": "https://localhost:44382/api/Product/brand/{{Brand}}",
+					"description": "",
+					"data": null,
+					"dataMode": "params",
+					"headerData": [],
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1737eb2f-7784-46cb-99d6-b7fdd1dcdb36",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+									" ",
+									"tests[\"Has Content-Type\"] = contentTypeHeaderExists;",
+									" ",
+									"if (contentTypeHeaderExists) {",
+									"    tests[\"Content-Type is application/json\"] = ",
+									"      responseHeaders[\"Content-Type\"].has(\"application/json\");",
+									"}",
+									"",
+									"var response = JSON.parse(responseBody);",
+									"var b = true;",
+									"",
+									"response.forEach(function (obj) {",
+									"    if(getVar(\"Brand\") != obj.brand) {",
+									"        b = false;",
+									"    }",
+									"});",
+									"tests[\"All Products have same Brand\"] = b;",
+									"",
+									"function getVar(txt){",
+									"    return postman.getEnvironmentVariable(txt);",
+									"}"
+								]
+							}
+						}
+					],
+					"folder": null,
+					"preRequestScript": null,
+					"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");\n \ntests[\"Has Content-Type\"] = contentTypeHeaderExists;\n \nif (contentTypeHeaderExists) {\n    tests[\"Content-Type is application/json\"] = \n      responseHeaders[\"Content-Type\"].has(\"application/json\");\n}\n\nvar response = JSON.parse(responseBody);\nvar b = true;\n\nresponse.forEach(function (obj) {\n    if(getVar(\"Brand\") != obj.brand) {\n        b = false;\n    }\n});\ntests[\"All Products have same Brand\"] = b;\n\nfunction getVar(txt){\n    return postman.getEnvironmentVariable(txt);\n}",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "eb4d08e9-7d88-46fb-af14-75c10997ac1c",
+					"headers": "",
+					"pathVariables": {}
+				},
+				{
 					"id": "69ea6423-13d7-4c1b-8b3f-9c79591feafb",
 					"name": "GET products",
 					"url": "{{url}}/api/Product",
@@ -133,6 +248,62 @@
 					"folder": null,
 					"preRequestScript": null,
 					"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");\n \ntests[\"Has Content-Type\"] = contentTypeHeaderExists;\n \nif (contentTypeHeaderExists) {\n    tests[\"Content-Type is application/json\"] = \n      responseHeaders[\"Content-Type\"].has(\"application/json\");\n}\n\nif(responseCode.code === 200){\n    postman.setEnvironmentVariable(\"ProductId\", pm.response.json()[0].id);\n    postman.setEnvironmentVariable(\"ProductJSON\", JSON.stringify(pm.response.json()[0]));\n}",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "eb4d08e9-7d88-46fb-af14-75c10997ac1c",
+					"headers": "",
+					"pathVariables": {}
+				},
+				{
+					"id": "77bba936-da90-412b-bf56-94c22ac34758",
+					"name": "Get Product/Description/{desc}",
+					"url": "https://localhost:44382/api/Product/Description/{{Description}}",
+					"description": "",
+					"data": null,
+					"dataMode": "params",
+					"headerData": [],
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "39fc6318-0189-4866-84ea-534801ace0a8",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"",
+									"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+									" ",
+									"tests[\"Has Content-Type\"] = contentTypeHeaderExists;",
+									" ",
+									"if (contentTypeHeaderExists) {",
+									"    tests[\"Content-Type is application/json\"] = ",
+									"      responseHeaders[\"Content-Type\"].has(\"application/json\");",
+									"}",
+									"",
+									"var response = JSON.parse(responseBody);",
+									"var b = true;",
+									"",
+									"response.forEach(function (obj) {",
+									"    if(getVar(\"Description\") != obj.description) {",
+									"        b = false;",
+									"    }",
+									"});",
+									"tests[\"All Products have same Description\"] = b;",
+									"",
+									"function getVar(txt){",
+									"    return postman.getEnvironmentVariable(txt);",
+									"}"
+								]
+							}
+						}
+					],
+					"folder": null,
+					"preRequestScript": null,
+					"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\nvar contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");\n \ntests[\"Has Content-Type\"] = contentTypeHeaderExists;\n \nif (contentTypeHeaderExists) {\n    tests[\"Content-Type is application/json\"] = \n      responseHeaders[\"Content-Type\"].has(\"application/json\");\n}\n\nvar response = JSON.parse(responseBody);\nvar b = true;\n\nresponse.forEach(function (obj) {\n    if(getVar(\"Description\") != obj.description) {\n        b = false;\n    }\n});\ntests[\"All Products have same Description\"] = b;\n\nfunction getVar(txt){\n    return postman.getEnvironmentVariable(txt);\n}",
 					"currentHelper": null,
 					"helperAttributes": null,
 					"collectionId": "eb4d08e9-7d88-46fb-af14-75c10997ac1c",
@@ -269,13 +440,13 @@
 				},
 				{
 					"key": "ProductId",
-					"value": "239fd664-6ccb-489a-8d0f-6502f2daf76a",
+					"value": "01a2804d-d402-4f25-b62a-e0363b9cfe5f",
 					"enabled": true,
 					"type": "text"
 				},
 				{
 					"key": "ProductJSON",
-					"value": "{\"id\":\"239fd664-6ccb-489a-8d0f-6502f2daf76a\",\"description\":\"50in TV\",\"model\":\"IPS130\",\"brand\":\"SUSA\"}",
+					"value": "{\"id\":\"01a2804d-d402-4f25-b62a-e0363b9cfe5f\",\"description\":\"22in monitor\",\"model\":\"IPS9000\",\"brand\":\"SUSA\"}",
 					"enabled": true,
 					"type": "text"
 				},
@@ -312,6 +483,24 @@
 				{
 					"key": "PutBrand",
 					"value": "Pan",
+					"enabled": true,
+					"type": "text"
+				},
+				{
+					"key": "Description",
+					"value": "22in monitor",
+					"enabled": true,
+					"type": "text"
+				},
+				{
+					"key": "Model",
+					"value": "IPS9000",
+					"enabled": true,
+					"type": "text"
+				},
+				{
+					"key": "Brand",
+					"value": "GL",
 					"enabled": true,
 					"type": "text"
 				}

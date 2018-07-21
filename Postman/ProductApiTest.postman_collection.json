@@ -239,6 +239,180 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get Product/Description/{desc}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "39fc6318-0189-4866-84ea-534801ace0a8",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+							" ",
+							"tests[\"Has Content-Type\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is application/json\"] = ",
+							"      responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}",
+							"",
+							"var response = JSON.parse(responseBody);",
+							"var b = true;",
+							"",
+							"response.forEach(function (obj) {",
+							"    if(getVar(\"Description\") != obj.description) {",
+							"        b = false;",
+							"    }",
+							"});",
+							"tests[\"All Products have same Description\"] = b;",
+							"",
+							"function getVar(txt){",
+							"    return postman.getEnvironmentVariable(txt);",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44382/api/Product/Description/{{Description}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"Product",
+						"Description",
+						"{{Description}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product/Model/{model}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5777f592-2947-4aa0-9e05-b6c2e805643f",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+							" ",
+							"tests[\"Has Content-Type\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is application/json\"] = ",
+							"      responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}",
+							"",
+							"var response = JSON.parse(responseBody);",
+							"var b = true;",
+							"",
+							"response.forEach(function (obj) {",
+							"    if(getVar(\"Model\") != obj.model) {",
+							"        b = false;",
+							"    }",
+							"});",
+							"tests[\"All Products have same Model\"] = b;",
+							"",
+							"function getVar(txt){",
+							"    return postman.getEnvironmentVariable(txt);",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44382/api/Product/model/{{Model}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"Product",
+						"model",
+						"{{Model}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product/Brand/{brand}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1737eb2f-7784-46cb-99d6-b7fdd1dcdb36",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var contentTypeHeaderExists = responseHeaders.hasOwnProperty(\"Content-Type\");",
+							" ",
+							"tests[\"Has Content-Type\"] = contentTypeHeaderExists;",
+							" ",
+							"if (contentTypeHeaderExists) {",
+							"    tests[\"Content-Type is application/json\"] = ",
+							"      responseHeaders[\"Content-Type\"].has(\"application/json\");",
+							"}",
+							"",
+							"var response = JSON.parse(responseBody);",
+							"var b = true;",
+							"",
+							"response.forEach(function (obj) {",
+							"    if(getVar(\"Brand\") != obj.brand) {",
+							"        b = false;",
+							"    }",
+							"});",
+							"tests[\"All Products have same Brand\"] = b;",
+							"",
+							"function getVar(txt){",
+							"    return postman.getEnvironmentVariable(txt);",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44382/api/Product/brand/{{Brand}}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44382",
+					"path": [
+						"api",
+						"Product",
+						"brand",
+						"{{Brand}}"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

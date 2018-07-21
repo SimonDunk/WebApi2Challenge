@@ -7,7 +7,7 @@ using ProductApi.Models;
 
 namespace ProductApi.Controllers
 {
-    [Route("api/Product")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -45,6 +45,45 @@ namespace ProductApi.Controllers
                 return NotFound();
             }
             return item;
+        }
+
+        //identify all products with the same description
+        //GET /api/Product/desc/{desc}
+        [HttpGet("description/{description}", Name = "DescriptionList")]
+        public ActionResult<List<Product>> GetByDescription(string desc)
+        {
+            var items = _context.ProductList.Where(p => p.Description == desc);
+            if (items == null)
+            {
+                return NotFound();
+            }
+            return items.ToList();
+        }
+
+        //identify all products with the same model
+        //GET /api/Product/model/{model}
+        [HttpGet("model/{model}", Name = "ModelList")]
+        public ActionResult<List<Product>> GetByModel(string model)
+        {
+            var items = _context.ProductList.Where(p => p.Model == model);
+            if (items == null)
+            {
+                return NotFound();
+            }
+            return items.ToList();
+        }
+
+        //identify all products with the same brand
+        //GET /api/Product/brand/{brand}
+        [HttpGet("brand/{brand}", Name = "BrandList")]
+        public ActionResult<List<Product>> GetByBrand(string brand)
+        {
+            var items = _context.ProductList.Where(p => p.Brand == brand);
+            if(items == null)
+            {
+                return NotFound();
+            }
+            return items.ToList();
         }
 
         //Creating new product

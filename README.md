@@ -5,14 +5,14 @@ A RESTful web service that performs CRUD operations for a product entity.
 
 | CRUD Operation | API Command | Action | Complete |
 | -------------- | ----------- | ------ | -------- |
-| GET | /api/product | Lists all products in JSON format | [x] |
-| GET | /api/product/{id} | Lists a specific product by id | [x] |
-| GET | /api/product/{model} | Lists all products with the same model name | [] |
-| GET | /api/product/{brand} | Lists all products with the same brand name | [] |
-| GET | /api/product/{description} | Lists all products with the same description | [] |
-| POST | /api/product | Adds a new item via JSON formatted text | [x] |
-| PUT | /api/product/{id} | Update an existing product via id in JSON formatted text | [x] |
-| DELETE | /api/product/{id} | Delete a product by id | [x] |
+| GET | /api/product | Lists all products in JSON format | - [x] |
+| GET | /api/product/{id} | Lists a specific product by id | - [x] |
+| GET | /api/product/{model} | Lists all products with the same model name | - [x] |
+| GET | /api/product/{brand} | Lists all products with the same brand name | - [x] |
+| GET | /api/product/{description} | Lists all products with the same description | - [x] |
+| POST | /api/product | Adds a new item via JSON formatted text | - [x] |
+| PUT | /api/product/{id} | Update an existing product via id in JSON formatted text | - [x] |
+| DELETE | /api/product/{id} | Delete a product by id | - [x] |
 | --- |
 
 
@@ -60,8 +60,15 @@ A RESTful web service that performs CRUD operations for a product entity.
 
 ## TODO
 * Apply some form of authentication
-* Add filtering to the GET products route
 * Create a light weight UI for querying the API
+
+## DONE
+* Create Model
+* Create Context
+* Create Controller
+* Add CRUD operations to Controller
+* Add dummy data to in-memory database
+* Add filtering to the GET products route
 
 ## BUGS
 * 
