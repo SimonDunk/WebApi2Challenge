@@ -5,14 +5,14 @@ A RESTful web service that performs CRUD operations for a product entity.
 
 | CRUD Operation | API Command | Action | Complete |
 | -------------- | ----------- | ------ | -------- |
-| GET | /api/product | Lists all products in JSON format | ✓ |
-| GET | /api/product/{id} | Lists a specific product by id | ✓ |
-| GET | /api/product/{model} | Lists all products with the same model name |  |
-| GET | /api/product/{brand} | Lists all products with the same brand name |  |
-| GET | /api/product/{description} | Lists all products with the same description |  |
-| POST | /api/product | Adds a new item via JSON formatted text | ✓ |
-| PUT | /api/product/{id} | Update an existing product via id in JSON formatted text | ✓ |
-| DELETE | /api/product/{id} | Delete a product by id | ✓ |
+| GET | /api/product | Lists all products in JSON format | [x] |
+| GET | /api/product/{id} | Lists a specific product by id | [x] |
+| GET | /api/product/{model} | Lists all products with the same model name | [] |
+| GET | /api/product/{brand} | Lists all products with the same brand name | [] |
+| GET | /api/product/{description} | Lists all products with the same description | [] |
+| POST | /api/product | Adds a new item via JSON formatted text | [x] |
+| PUT | /api/product/{id} | Update an existing product via id in JSON formatted text | [x] |
+| DELETE | /api/product/{id} | Delete a product by id | [x] |
 | --- |
 
 
@@ -44,19 +44,19 @@ A RESTful web service that performs CRUD operations for a product entity.
 
 ## Important files
 * Startup.cs
-..* database context is registered with dependency injection (DI) container
-..* The context is registered with DI are available to the controllers
-..* specifies an in memory database and is injected into the service container
+	* database context is registered with dependency injection (DI) container
+	* The context is registered with DI are available to the controllers
+	* specifies an in memory database and is injected into the service container
 
 * Product.cs
-..* Model of the data to be used by the controller and context
+	* Model of the data to be used by the controller and context
 
 * ProductContext.cs
-..* coordinates entity framework functionality for a model
+	* coordinates entity framework functionality for a model
 
 * ProductController.cs
-..* uses the model to modify the database/context 
-..* stores all routes and performs their implemntation
+	* uses the model to modify the database/context 
+	* stores all routes and performs their implemntation
 
 ## TODO
 * Apply some form of authentication
