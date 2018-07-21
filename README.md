@@ -1,7 +1,20 @@
-# WebApi2Challenge
+﻿# WebApi2Challenge
 
-## About
+## About API
 A RESTful web service that performs CRUD operations for a product entity.
+
+| CRUD Operation | API Command | Action | Complete |
+| -------------- | ----------- | ------ | -------- |
+| GET | /api/product | Lists all products in JSON format | ✓ |
+| GET | /api/product/{id} | Lists a specific product by id | ✓ |
+| GET | /api/product/{model} | Lists all products with the same model name |  |
+| GET | /api/product/{brand} | Lists all products with the same brand name |  |
+| GET | /api/product/{description} | Lists all products with the same description |  |
+| POST | /api/product | Adds a new item via JSON formatted text | ✓ |
+| PUT | /api/product/{id} | Update an existing product via id in JSON formatted text | ✓ |
+| DELETE | /api/product/{id} | Delete a product by id | ✓ |
+| --- |
+
 
 ## Software Requirements
 * Visual Studio 2017 15.7.3 or later
@@ -10,7 +23,7 @@ A RESTful web service that performs CRUD operations for a product entity.
 * .NET Core 2.1 SDK
 * Postman
 
-##How to use
+## How to use
 * Open the project in Visual Studio
 * Press Ctrl + F5 to launch the app
 * The URL in the browser should look something like this https://localhost:44382/api/values
@@ -28,6 +41,22 @@ A RESTful web service that performs CRUD operations for a product entity.
 * Click on the ProductApiTest Collection
 * Click Run ProductApiTest
 * The results will be shown
+
+## Important files
+* Startup.cs
+//database context is registered with dependency injection (DI) container
+//The context is registered with DI are available to the controllers
+//specifies an in memory database and is injected into the service container
+
+* Product.cs
+//Model of the data to be used by the controller and context
+
+* ProductContext.cs
+//coordinates entity framework functionality for a model
+
+* ProductController.cs
+//uses the model to modify the database/context 
+//stores all routes and performs their implemntation
 
 ## TODO
 * Apply some form of authentication

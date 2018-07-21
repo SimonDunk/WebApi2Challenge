@@ -14,28 +14,27 @@ namespace ProductApi.Controllers
         private readonly ProductContext _context;
 
         //constructor uses dependency injection to inject the database context into the controller
-        //database context is used in each CRUD operation
-        //constructor creates an item for the in memory database if one doesn't exist
         public ProductController(ProductContext context)
         {
             _context = context;
 
-            if(_context.ProductList.Count() == 0)
+            //constructor creates an item for the in memory database if one doesn't exist
+            if (_context.ProductList.Count() == 0)
             {
                 _context.ProductList.Add(new Product { Description = "large tv", Model = "A100", Brand = "GL" });
                 _context.SaveChanges();
             }
         }
 
+        //MVC automatically serializes object to JSON and displays on browser
         //GET /api/Product
-        //MVC automatically serializes object to JSON
         [HttpGet]
         public ActionResult<List<Product>> GetAll()
         {
             return _context.ProductList.ToList();
         }
 
-        //uniquely identifying value by assigns id by the value {id} in the route URL
+        //uniquely identifying product by the value {id} in the route URL
         //GET /api/Product/{id}
         [HttpGet("{id}", Name = "GetProduct")]
         public ActionResult<Product> GetById(string id)
@@ -48,7 +47,7 @@ namespace ProductApi.Controllers
             return item;
         }
 
-        //MVC gets the value of the item from the HTTP request
+        //Creating new product
         //POST /api/product
         [HttpPost]
         public IActionResult Create(Product item)
@@ -59,9 +58,11 @@ namespace ProductApi.Controllers
             //returns a 201 response (POST) and creates a new resource on the server
             //adds a location header to response which specifies URI of the newly created item
             //uses GetProduct named route to create the URL defined by GetById
+            //MVC gets the value of the item from the HTTP request
             return CreatedAtRoute("GetProduct", new { id = item.Id }, item);
         }
 
+        //updating a product 
         //PUT /api/product/{id}
         [HttpPut("{id}")]
         public IActionResult Update(string id, Product item)
@@ -82,6 +83,7 @@ namespace ProductApi.Controllers
             return NoContent();
         }
 
+        //delete a product
         //DELETE /api/product/{id}
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)

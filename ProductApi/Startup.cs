@@ -22,7 +22,7 @@ namespace ProductApi
         {
             //database context is registered with dependency injection (DI) container
             //services that are registered with DI are available to the controllers
-            //specifies an in memory database is injected into the service container
+            //specifies an in memory database and is injected into the service container
             services.AddDbContext<ProductContext>(opt => opt.UseInMemoryDatabase("ProductList"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
