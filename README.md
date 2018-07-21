@@ -7,9 +7,9 @@ A RESTful web service that performs CRUD operations for a product entity.
 | -------------- | ----------- | ------ | -------- |
 | GET | /api/product | Lists all products in JSON format | - [x] |
 | GET | /api/product/{id} | Lists a specific product by id | - [x] |
-| GET | /api/product/{model} | Lists all products with the same model name | - [x] |
-| GET | /api/product/{brand} | Lists all products with the same brand name | - [x] |
-| GET | /api/product/{description} | Lists all products with the same description | - [x] |
+| GET | /api/product/description/{description} | Lists all products with the same description | - [x] |
+| GET | /api/product/model/{model} | Lists all products with the same model name | - [x] |
+| GET | /api/product/brand/{brand} | Lists all products with the same brand name | - [x] |
 | POST | /api/product | Adds a new item via JSON formatted text | - [x] |
 | PUT | /api/product/{id} | Update an existing product via id in JSON formatted text | - [x] |
 | DELETE | /api/product/{id} | Delete a product by id | - [x] |
