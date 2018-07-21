@@ -17,6 +17,11 @@ namespace ProductApi
 {
     public class Startup
     {
+        //dummy data
+        private string[] descs = { "large tv", "22in monitor", "4k tv", "1080p tv", "144p tv" };
+        private string[] models = { "A100", "IPS9000", "OLED117" };
+        private string[] brands = { "GL", "SUSA", "ACE", "PAN", "TKL" };
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -29,9 +34,29 @@ namespace ProductApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
+            var context = serviceProvider.GetService<ProductContext>();
+            PopulateDB(context, 20);
+
             app.UseMvc();
+        }
+
+        //filling database with products
+        private void PopulateDB(ProductContext context, int i)
+        {
+            for (int n = 0; i > n; n++)
+            {
+                AddProduct(context, i);
+            }
+            context.SaveChanges();
+        }
+
+        //adding individual product
+        private void AddProduct(ProductContext context, int i)
+        {
+            Random rnd = new Random();
+            context.ProductList.Add(new Product { Description = descs[rnd.Next(descs.Count())], Model = models[rnd.Next(models.Count())], Brand = brands[rnd.Next(brands.Count())] });
         }
     }
 }
