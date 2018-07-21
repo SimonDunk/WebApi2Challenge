@@ -17,11 +17,11 @@ A RESTful web service that performs CRUD operations for a product entity.
 
 
 ## Software Requirements
-* Visual Studio 2017 15.7.3 or later
-* ASP.NET and web development workload
-* .NET Core cross-platform development
-* .NET Core 2.1 SDK
-* Postman
+* [Visual Studio 2017 15.7.3 or later] (https://visualstudio.microsoft.com/downloads/)
+* ASP.NET and web development workload for Visual Studio
+* .NET Core cross-platform development for Visual Studio
+* [.NET Core 2.1 SDK] (https://www.microsoft.com/net/download)
+* [Postman] (https://www.getpostman.com/apps)
 
 ## How to use
 * Open the project in Visual Studio
@@ -44,19 +44,19 @@ A RESTful web service that performs CRUD operations for a product entity.
 
 ## Important files
 * Startup.cs
-//database context is registered with dependency injection (DI) container
-//The context is registered with DI are available to the controllers
-//specifies an in memory database and is injected into the service container
+..* database context is registered with dependency injection (DI) container
+..* The context is registered with DI are available to the controllers
+..* specifies an in memory database and is injected into the service container
 
 * Product.cs
-//Model of the data to be used by the controller and context
+..* Model of the data to be used by the controller and context
 
 * ProductContext.cs
-//coordinates entity framework functionality for a model
+..* coordinates entity framework functionality for a model
 
 * ProductController.cs
-//uses the model to modify the database/context 
-//stores all routes and performs their implemntation
+..* uses the model to modify the database/context 
+..* stores all routes and performs their implemntation
 
 ## TODO
 * Apply some form of authentication
