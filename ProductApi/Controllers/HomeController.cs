@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProductApi.Models;
 
 namespace ProductApi.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public IActionResult Index()
@@ -17,7 +19,7 @@ namespace ProductApi.Controllers
 
         public IActionResult CreateProduct()
         {
-            ViewData["Message"] = "create products here.";
+            ViewData["Message"] = "Create products here.";
 
             return View();
         }

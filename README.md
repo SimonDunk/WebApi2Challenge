@@ -79,7 +79,7 @@ A RESTful web service that performs CRUD operations for a product entity.
 	 * closes edit input
 
 ## TODO
-* Apply some form of authentication
+* Apply external authentication services
 * Pagination
 * Create and Edit and Product Views
 
@@ -91,6 +91,7 @@ A RESTful web service that performs CRUD operations for a product entity.
 * Add dummy data to in-memory database
 * Add filtering to the GET products route
 * Added Index view
+* Applied basic authentication
 
 ## BUGS
 * 
