@@ -39,6 +39,20 @@ namespace ProductApi
             var context = serviceProvider.GetService<ProductContext>();
             PopulateDB(context, 20);
 
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseHsts();
+            }
+
+            //serving static files and enabling default file mapping
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
+            app.UseHttpsRedirection();
             app.UseMvc();
         }
 

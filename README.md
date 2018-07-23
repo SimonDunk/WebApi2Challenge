@@ -58,6 +58,27 @@ A RESTful web service that performs CRUD operations for a product entity.
 	* uses the model to modify the database/context 
 	* stores all routes and performs their implemntation
 
+* index.html
+	* light weight UI for querying the API
+
+* site.js
+	* getCount()
+		* counts elements in database
+	* getData()
+		* gets a list of to do items sending an HTTP GET request to /api/product
+	* addItem()
+		* adds a product sending a HTTP POST request to /api/product
+
+	* deleteItem(id)
+		* deleting a product by id sending a HTTP DELETE request to /api/product
+	* editItem()
+		* shows input fields if id is correct
+	* my-form On Submit
+		* updating a product by id sending a HTTP PUT request to /api/product
+	* closeInput()
+	 * closes edit input
+
+
 ## TODO
 * Apply some form of authentication
 * Create a light weight UI for querying the API
