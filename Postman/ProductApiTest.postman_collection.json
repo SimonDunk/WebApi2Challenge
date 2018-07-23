@@ -282,12 +282,10 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "https://localhost:44382/api/Product/Description/{{Description}}",
-					"protocol": "https",
+					"raw": "{{url}}/api/Product/Description/{{Description}}",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "44382",
 					"path": [
 						"api",
 						"Product",
@@ -340,12 +338,10 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "https://localhost:44382/api/Product/model/{{Model}}",
-					"protocol": "https",
+					"raw": "{{url}}/api/Product/model/{{Model}}",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "44382",
 					"path": [
 						"api",
 						"Product",
@@ -398,12 +394,10 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "https://localhost:44382/api/Product/brand/{{Brand}}",
-					"protocol": "https",
+					"raw": "{{url}}/api/Product/brand/{{Brand}}",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "44382",
 					"path": [
 						"api",
 						"Product",

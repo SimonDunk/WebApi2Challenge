@@ -24,7 +24,7 @@
 				{
 					"id": "12f5a3ed-f6fb-487e-87c8-1ce932c0ac5a",
 					"name": "Get Product/Model/{model}",
-					"url": "https://localhost:44382/api/Product/model/{{Model}}",
+					"url": "{{url}}/api/Product/model/{{Model}}",
 					"description": "",
 					"data": null,
 					"dataMode": "params",
@@ -154,7 +154,7 @@
 				{
 					"id": "66c61d79-9e29-49d2-939e-00cc9bfb1390",
 					"name": "Get Product/Brand/{brand}",
-					"url": "https://localhost:44382/api/Product/brand/{{Brand}}",
+					"url": "{{url}}/api/Product/brand/{{Brand}}",
 					"description": "",
 					"data": null,
 					"dataMode": "params",
@@ -257,7 +257,7 @@
 				{
 					"id": "77bba936-da90-412b-bf56-94c22ac34758",
 					"name": "Get Product/Description/{desc}",
-					"url": "https://localhost:44382/api/Product/Description/{{Description}}",
+					"url": "{{url}}/api/Product/Description/{{Description}}",
 					"description": "",
 					"data": null,
 					"dataMode": "params",
@@ -434,7 +434,7 @@
 			"values": [
 				{
 					"key": "url",
-					"value": "https://localhost:44382/",
+					"value": "https://localhost:44364/",
 					"enabled": true,
 					"type": "text"
 				},
