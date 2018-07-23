@@ -2,15 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aspnet-ProductApi-B53063D5-E476-4AC6-B8D0-F33F578BC19F</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.1.1" />
+    <Folder Include="wwwroot\js\" />
   </ItemGroup>
 
 </Project>
