@@ -26,8 +26,7 @@ A RESTful web service that performs CRUD operations for a product entity.
 ## How to use
 * Open the project in Visual Studio
 * Press Ctrl + F5 to launch the app
-* The URL in the browser should look something like this https://localhost:44382/api/values
-* it should display ["value1","value2"] if working correctly
+* The index should be displayed with a list of all products
 * Modify the URL to https://localhost:44382/api/product to view all products in JSON format
 * You can look at individual products if you add the product id to the end of the link eg https://localhost:44382/api/product/bb6605b6-cd83-4d8f-9f1c-2e187b0d6d6a 
 * 
@@ -47,6 +46,7 @@ A RESTful web service that performs CRUD operations for a product entity.
 	* database context is registered with dependency injection (DI) container
 	* The context is registered with DI are available to the controllers
 	* specifies an in memory database and is injected into the service container
+	* sets default route
 
 * Product.cs
 	* Model of the data to be used by the controller and context
@@ -58,9 +58,30 @@ A RESTful web service that performs CRUD operations for a product entity.
 	* uses the model to modify the database/context 
 	* stores all routes and performs their implemntation
 
+* index.html
+	* light weight UI for querying the API
+
+* site.js
+	* getCount()
+		* counts elements in database
+	* getData()
+		* gets a list of to do items sending an HTTP GET request to /api/product
+	* addItem()
+		* adds a product sending a HTTP POST request to /api/product
+
+	* deleteItem(id)
+		* deleting a product by id sending a HTTP DELETE request to /api/product
+	* editItem()
+		* shows input fields if id is correct
+	* my-form On Submit
+		* updating a product by id sending a HTTP PUT request to /api/product
+	* closeInput()
+	 * closes edit input
+
 ## TODO
 * Apply some form of authentication
-* Create a light weight UI for querying the API
+* Pagination
+* Create and Edit and Product Views
 
 ## DONE
 * Create Model
@@ -69,6 +90,7 @@ A RESTful web service that performs CRUD operations for a product entity.
 * Add CRUD operations to Controller
 * Add dummy data to in-memory database
 * Add filtering to the GET products route
+* Added Index view
 
 ## BUGS
 * 

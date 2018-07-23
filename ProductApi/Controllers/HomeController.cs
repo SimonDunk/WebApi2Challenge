@@ -15,16 +15,16 @@ namespace ProductApi.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult CreateProduct()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "create products here.";
 
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult EditProduct()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Edit Products here.";
 
             return View();
         }

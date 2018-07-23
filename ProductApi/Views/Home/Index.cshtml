@@ -2,43 +2,48 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <h1>Product CRUD UI</h1>
-    <h2>Add Product</h2>
-    <form action="javascript:void(0);" method="POST" onsubmit="addItem();">
-        <input type="text" id="add-description" placeholder="Description" />
-        <input type="text" id="add-model" placeholder="Model" />
-        <input type="text" id="add-brand" placeholder="Brand" />
-        <input type="submit" value="Add" />
-    </form>
-
-    <div id="spoiler">
-        <h2>Edit Product</h2>
-        <form class="my-form">
-            <input type="hidden" id="edit-id" />
-            <input type="text" id="edit-description" />
-            <input type="text" id="edit-model" />
-            <input type="text" id="edit-brand" />
-            <input type="submit" value="Edit" />
-            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+<h1>Product CRUD UI</h1>
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Add Product</h2>
+        <form action="javascript:void(0);" method="POST" onsubmit="addItem();" class="form-inline">
+            <input type="text" id="add-description" placeholder="Description" class="form-control"/>
+            <input type="text" id="add-model" placeholder="Model" class="form-control"/>
+            <input type="text" id="add-brand" placeholder="Brand" class="form-control"/>
+            <input type="submit" value="Add" class="btn btn-primary"/>
         </form>
     </div>
-
-    <p id="counter"></p>
-    <a onclick="getData()">All results</a>
-
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Description</th>
-            <th>Model</th>
-            <th>Brand</th>
-        </tr>
-        <tbody id="products"></tbody>
-    </table>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/site.js"></script>
 </div>
+<div class="row">
+    <div class="col-lg-12">
+        <div id="spoiler">
+            <h2>Edit Product</h2>
+            <form class="my-form form-inline">
+                <input type="hidden" id="edit-id" />
+                <input type="text" id="edit-description" class="form-control"/>
+                <input type="text" id="edit-model" class="form-control"/>
+                <input type="text" id="edit-brand" class="form-control"/>
+                <input type="submit" value="Edit" class="btn btn-primary"/>
+                <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12-lg">
+        <p id="counter"></p>
+        <a onclick="getData()">All results</a>
+
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Model</th>
+                <th>Brand</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tbody id="products"></tbody>
+        </table>
+    </div>
+</div>    

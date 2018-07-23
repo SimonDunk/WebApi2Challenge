@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Edit Product";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div id="spoiler">
+            <form class="my-form form-inline">
+                <input type="hidden" id="edit-id" />
+                <input type="text" id="edit-description" class="form-control" />
+                <input type="text" id="edit-model" class="form-control" />
+                <input type="text" id="edit-brand" class="form-control" />
+                <input type="submit" value="Edit" class="btn btn-primary" />
+                <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+            </form>
+        </div>
+    </div>
+</div>
