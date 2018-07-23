@@ -20,7 +20,7 @@ $(document).ready(function () {
 });
 
 //gets a list of to do items sending an HTTP GET request to /api/product
-function getData() {
+function getData(txt) {
     $.ajax({
         type: 'GET', //request type
         url: uri, // request url
@@ -29,9 +29,9 @@ function getData() {
             getCount(data.length);
             $.each(data, function (key, item) {
                 $('<tr><td>' + item.id + '</td>' +
-                    '<td>' + item.description + '</td>' +
-                    '<td>' + item.model + '</td>' +
-                    '<td>' + item.brand + '</td>' +
+                    '<td>' + '<a onclick="getSpecificData(\'' + item.description + '\')">' + item.description + '</a></td>' +
+                    '<td>' + '<a onclick="getSpecificData(\'' + item.model + '\')">' + item.model + '</a></td>' + '</td>' +
+                    '<td>' + '<a onclick="getSpecificData(\'' + item.brand + '\')">' + item.brand + '</a></td>' + '</td>' +
                     '<td><button onclick="editItem(\'' + item.id + '\')">Edit</button></td>' +
                     '<td><button onclick="deleteItem(\'' + item.id + '\');">Delete</button></td>' +
                     '</tr>').appendTo($('#products'));
@@ -120,4 +120,28 @@ $('.my-form').on('submit', function () {
 //closes edit input
 function closeInput() {
     $('#spoiler').css({ 'display': 'none' });
+}
+
+function getSpecificData(txt) {
+    $.ajax({
+        type: 'GET', //request type
+        url: uri, // request url
+        success: function (data) { //callback function when request succeeds
+            $('#products').empty();
+            getCount(data.length);
+            $.each(data, function (key, item) {
+                if (item.description === txt || item.model === txt || item.brand === txt) {
+                    $('<tr><td>' + item.id + '</td>' +
+                        '<td>' + '<a onclick="getSpecificData(\'' + item.description + '\')">' + item.description + '</a></td>' +
+                        '<td>' + '<a onclick="getSpecificData(\'' + item.model + '\')">' + item.model + '</a></td>' + '</td>' +
+                        '<td>' + '<a onclick="getSpecificData(\'' + item.brand + '\')">' + item.brand + '</a></td>' + '</td>' +
+                        '<td><button onclick="editItem(\'' + item.id + '\')">Edit</button></td>' +
+                        '<td><button onclick="deleteItem(\'' + item.id + '\');">Delete</button></td>' +
+                        '</tr>').appendTo($('#products'));
+                }             
+            });
+            //DOM is updated with product information
+            products = data;
+        }
+    });
 }
