@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProductApi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProductApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -50,9 +52,9 @@ namespace ProductApi.Controllers
         //identify all products with the same description
         //GET /api/Product/desc/{desc}
         [HttpGet("description/{description}", Name = "DescriptionList")]
-        public ActionResult<List<Product>> GetByDescription(string desc)
+        public ActionResult<List<Product>> GetByDescription(string description)
         {
-            var items = _context.ProductList.Where(p => p.Description == desc);
+            var items = _context.ProductList.Where(p => p.Description == description);
             if (items == null)
             {
                 return NotFound();

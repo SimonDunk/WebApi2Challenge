@@ -18,10 +18,6 @@ namespace ProductApi
 {
     public class Startup
     {
-        //dummy data
-        private string[] descs = { "large tv", "22in monitor", "4k tv", "1080p tv", "144p tv" };
-        private string[] models = { "A100", "IPS9000", "OLED117" };
-        private string[] brands = { "GL", "SUSA", "ACE", "PAN", "TKL" };
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -73,10 +69,9 @@ namespace ProductApi
 
             //app.UseDefaultFiles();
             var context = serviceProvider.GetService<ProductContext>();
-            PopulateDB(context, 20);
+            ProductData p = new ProductData(context, 20);
 
             app.UseAuthentication();
-
 
             app.UseMvc(routes =>
             {
@@ -84,23 +79,6 @@ namespace ProductApi
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-        }
-
-        //filling database with products
-        private void PopulateDB(ProductContext context, int i)
-        {
-            for (int n = 0; i > n; n++)
-            {
-                AddProduct(context, i);
-            }
-            context.SaveChanges();
-        }
-
-        //adding individual product
-        private void AddProduct(ProductContext context, int i)
-        {
-            Random rnd = new Random();
-            context.ProductList.Add(new Product { Description = descs[rnd.Next(0, descs.Count())], Model = models[rnd.Next(0, models.Count())], Brand = brands[rnd.Next(0, brands.Count())] });
         }
     }
 }
